@@ -40,4 +40,10 @@ def spawn_shell(exercise_dir: Path) -> ShellResult:
         cmd = [shell, "--rcfile", str(bashrc)]
 
     subprocess.run(cmd, cwd=exercise_dir, env=env)
-    return ShellResult.CHECK
+
+    # check command creates a marker file to distinguish from Ctrl+D
+    check_marker = exercise_dir / ".git" / "git-learn-check"
+    if check_marker.exists():
+        check_marker.unlink()
+        return ShellResult.CHECK
+    return ShellResult.EXIT
