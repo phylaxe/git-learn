@@ -11,14 +11,14 @@ setup:
   - cmd: "git commit -m 'Initial commit'"
 
 task: |
-  Bearbeite die Datei README.md und fuege eine neue Zeile hinzu,
+  Bearbeite die Datei README.md und füge eine neue Zeile hinzu,
   z.B. "Dies ist mein erstes Projekt".
-  Fuehre danach `git status` aus und beobachte, was Git dir anzeigt.
-  Die Datei soll veraendert, aber NICHT gestaged sein.
+  Führe danach `git status` aus und beobachte, was Git dir anzeigt.
+  Die Datei soll verändert, aber NICHT gestaged sein.
 
 hints:
-  - "Oeffne README.md mit einem Editor oder nutze `echo`"
-  - "Mit `echo 'neuer Text' >> README.md` kannst du Text anhaengen"
+  - "Öffne README.md mit einem Editor oder nutze `echo`"
+  - "Mit `echo 'neuer Text' >> README.md` kannst du Text anhängen"
   - "echo 'Dies ist mein erstes Projekt' >> README.md"
 
 solution: |
@@ -36,16 +36,16 @@ validation:
 
 ## Dateien bearbeiten
 
-Wenn du eine Datei in deinem Repository veraenderst, erkennt Git das
+Wenn du eine Datei in deinem Repository veränderst, erkennt Git das
 sofort. Mit `git status` kannst du jederzeit sehen, welche Dateien
-veraendert wurden.
+verändert wurden.
 
 Git unterscheidet dabei zwischen:
 - **Untracked**: Neue Dateien, die Git noch nicht kennt
-- **Modified**: Bekannte Dateien, die veraendert wurden
-- **Staged**: Dateien, die fuer den naechsten Commit vorgemerkt sind
+- **Modified**: Bekannte Dateien, die verändert wurden
+- **Staged**: Dateien, die für den nächsten Commit vorgemerkt sind
 
 ### Was du lernst
-- Wie Git Aenderungen im Working Directory erkennt
+- Wie Git Änderungen im Working Directory erkennt
 - Was `git status` dir anzeigt
 - Den Unterschied zwischen tracked und modified Dateien
