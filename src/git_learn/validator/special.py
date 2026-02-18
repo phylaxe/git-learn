@@ -57,6 +57,24 @@ def validate_hook_exists(rule: dict, repo: Path) -> ValidationResult:
     )
 
 
+def validate_check_answer(rule: dict, repo: Path) -> ValidationResult:
+    answer_file = repo / ".git" / "git-learn-answer"
+    if not answer_file.exists():
+        return ValidationResult(
+            passed=False,
+            message="Keine Antwort übermittelt. Nutze: check \"deine antwort\"",
+            rule_type="check_answer",
+        )
+    answer = answer_file.read_text().strip().lower()
+    contains = rule["contains"].lower()
+    passed = contains in answer
+    return ValidationResult(
+        passed=passed,
+        message=f"Antwort '{answer}' {'enthält' if passed else 'enthält nicht'} '{rule['contains']}'",
+        rule_type="check_answer",
+    )
+
+
 def validate_config_value(rule: dict, repo: Path) -> ValidationResult:
     key = rule["key"]
     expected = rule["expected"]

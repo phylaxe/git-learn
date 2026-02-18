@@ -18,8 +18,9 @@ setup:
 
 task: |
   Nutze `git log` um die Geschichte deines Repositories anzuzeigen.
-  Finde die Commit-Nachricht des zweiten Commits. Probiere auch
-  `git log --oneline` für eine kompakte Ansicht aus.
+  Finde die Commit-Nachricht des zweiten Commits.
+  Übermittle sie mit: check "die commit nachricht"
+  Probiere auch `git log --oneline` für eine kompakte Ansicht.
 
 hints:
   - "Mit `git log` siehst du alle Commits mit Details"
@@ -27,14 +28,12 @@ hints:
   - "Der zweite Commit hat die Nachricht 'Zweite Datei hinzugefügt'"
 
 solution: |
-  git log
   git log --oneline
+  check "Zweite Datei hinzugefügt"
 
 validation:
-  - type: commit_count
-    expected: 3
-  - type: working_tree_clean
-    expected: true
+  - type: check_answer
+    contains: "Zweite Datei"
 ---
 
 ## Die Geschichte lesen

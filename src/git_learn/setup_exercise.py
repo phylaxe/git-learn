@@ -80,6 +80,9 @@ alias git='_git_learn_log'
 
 # Shell commands
 check() {{
+    if [ -n "$1" ]; then
+        echo "$*" > "$GIT_LEARN_EXERCISE/.git/git-learn-answer"
+    fi
     touch "$GIT_LEARN_EXERCISE/.git/git-learn-check"
     exit 0
 }}
