@@ -29,7 +29,8 @@ class LessonScreen(Screen):
             f"  |  Level: {self.lesson.level}  |  {self.lesson.points} Punkte\n"
         )
         yield Markdown(self.lesson.body)
-        yield Static(f"\n  [bold]Aufgabe:[/bold]\n  {self.lesson.task}")
+        task_indented = self.lesson.task.rstrip().replace("\n", "\n  ")
+        yield Static(f"\n  [bold]Aufgabe:[/bold]\n  {task_indented}\n")
         yield Static(
             "\n  [dim]Enter: Shell öffnen  |  h: Hint  |  s: Lösung  |  Esc: Zurück[/dim]\n"
         )
