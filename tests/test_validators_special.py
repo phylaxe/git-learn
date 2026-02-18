@@ -45,6 +45,32 @@ def test_hook_exists(tmp_repo: Path) -> None:
     assert not result.passed
 
 
+def test_check_answer_correct(tmp_repo: Path) -> None:
+    answer_file = tmp_repo / ".git" / "git-learn-answer"
+    answer_file.write_text("Zweite Datei hinzugefügt\n")
+    result = validate_rule({"type": "check_answer", "contains": "Zweite Datei"}, tmp_repo)
+    assert result.passed
+
+
+def test_check_answer_wrong(tmp_repo: Path) -> None:
+    answer_file = tmp_repo / ".git" / "git-learn-answer"
+    answer_file.write_text("falsche antwort\n")
+    result = validate_rule({"type": "check_answer", "contains": "Zweite Datei"}, tmp_repo)
+    assert not result.passed
+
+
+def test_check_answer_missing(tmp_repo: Path) -> None:
+    result = validate_rule({"type": "check_answer", "contains": "Zweite Datei"}, tmp_repo)
+    assert not result.passed
+
+
+def test_check_answer_case_insensitive(tmp_repo: Path) -> None:
+    answer_file = tmp_repo / ".git" / "git-learn-answer"
+    answer_file.write_text("zweite datei hinzugefügt\n")
+    result = validate_rule({"type": "check_answer", "contains": "Zweite Datei"}, tmp_repo)
+    assert result.passed
+
+
 def test_config_value(tmp_repo: Path) -> None:
     _run("git config user.name 'TestUser'", tmp_repo)
     result = validate_rule(

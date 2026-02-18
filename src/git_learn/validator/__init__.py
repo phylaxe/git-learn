@@ -18,6 +18,7 @@ from .special import (
     validate_remote_exists,
     validate_hook_exists,
     validate_config_value,
+    validate_check_answer,
 )
 
 VALIDATORS = {
@@ -36,6 +37,7 @@ VALIDATORS = {
     "remote_exists": validate_remote_exists,
     "hook_exists": validate_hook_exists,
     "config_value": validate_config_value,
+    "check_answer": validate_check_answer,
 }
 
 
