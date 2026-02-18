@@ -10,7 +10,7 @@ from .screens.lesson import LessonScreen
 from .screens.lesson_list import LessonListScreen
 from .screens.result import ResultScreen
 from .setup_exercise import setup_exercise, get_exercise_path, teardown_exercise
-from .shell import spawn_shell
+from .shell import spawn_shell, ShellResult
 from .validator import validate_all
 
 
@@ -50,10 +50,11 @@ class GitLearnApp(App):
 
         # Suspend TUI and spawn shell
         with self.suspend():
-            spawn_shell(exercise_dir)
+            result = spawn_shell(exercise_dir)
 
-        # Back from shell — validate
-        self._validate_exercise(lesson)
+        # Only validate if user typed 'check', not Ctrl+D
+        if result == ShellResult.CHECK:
+            self._validate_exercise(lesson)
 
     def _validate_exercise(self, lesson: Lesson) -> None:
         """Validate the exercise and show results."""

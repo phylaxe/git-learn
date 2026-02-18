@@ -11,7 +11,7 @@ from .lesson_loader import Lesson
 def _build_task_echo(task: str) -> str:
     """Build echo statements for multi-line task text."""
     lines = task.rstrip().split("\n")
-    return "\n".join(f"echo '  {line}'" for line in lines)
+    return "\n".join(f"echo '    {line}'" for line in lines)
 
 
 def get_exercise_path(slug: str) -> Path:
@@ -80,6 +80,7 @@ alias git='_git_learn_log'
 
 # Shell commands
 check() {{
+    touch "$GIT_LEARN_EXERCISE/.git/git-learn-check"
     exit 0
 }}
 
