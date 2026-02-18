@@ -12,6 +12,13 @@ from .files import (
     validate_working_tree_clean,
     validate_staging_area_empty,
 )
+from .special import (
+    validate_stash_empty,
+    validate_tag_exists,
+    validate_remote_exists,
+    validate_hook_exists,
+    validate_config_value,
+)
 
 VALIDATORS = {
     "commit_count": validate_commit_count,
@@ -24,6 +31,11 @@ VALIDATORS = {
     "file_not_exists": validate_file_not_exists,
     "working_tree_clean": validate_working_tree_clean,
     "staging_area_empty": validate_staging_area_empty,
+    "stash_empty": validate_stash_empty,
+    "tag_exists": validate_tag_exists,
+    "remote_exists": validate_remote_exists,
+    "hook_exists": validate_hook_exists,
+    "config_value": validate_config_value,
 }
 
 
