@@ -1,5 +1,5 @@
 ---
-title: "Visueller Ueberblick"
+title: "Visueller Überblick"
 level: beginner
 order: 8
 points: 15
@@ -11,7 +11,7 @@ setup:
   - cmd: "git commit -m 'Projekt gestartet'"
   - cmd: "echo 'Erste Funktion' > feature.txt"
   - cmd: "git add feature.txt"
-  - cmd: "git commit -m 'Erste Funktion hinzugefuegt'"
+  - cmd: "git commit -m 'Erste Funktion hinzugefügt'"
   - cmd: "echo 'Dokumentation' > docs.txt"
   - cmd: "git add docs.txt"
   - cmd: "git commit -m 'Dokumentation erstellt'"
@@ -22,12 +22,12 @@ setup:
 
 task: |
   Erstelle einen Git-Alias namens 'tree', der den Befehl
-  `log --oneline --graph --all` ausfuehrt. Nutze dann `git tree`
+  `log --oneline --graph --all` ausführt. Nutze dann `git tree`
   um die Branch-Struktur deines Repositories visuell anzuzeigen.
 
 hints:
   - "Einen Alias erstellst du mit `git config alias.name 'befehl'`"
-  - "Der vollstaendige Befehl: `git config alias.tree 'log --oneline --graph --all'`"
+  - "Der vollständige Befehl: `git config alias.tree 'log --oneline --graph --all'`"
   - "Danach kannst du `git tree` verwenden"
 
 solution: |
@@ -40,14 +40,14 @@ validation:
     expected: "log --oneline --graph --all"
 ---
 
-## Visueller Ueberblick
+## Visueller Überblick
 
 Wenn dein Projekt mehrere Branches hat, wird es schnell
-unuebersichtlich. Mit `git log --oneline --graph --all` bekommst
+unübersichtlich. Mit `git log --oneline --graph --all` bekommst
 du eine visuelle Darstellung aller Branches und Commits.
 
 Da dieser Befehl sehr lang ist, kannst du einen **Git-Alias**
-erstellen. Ein Alias ist eine Abkuerzung fuer einen laengeren
+erstellen. Ein Alias ist eine Abkürzung für einen längeren
 Git-Befehl.
 
 ### Was du lernst

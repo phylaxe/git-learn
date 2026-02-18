@@ -16,7 +16,7 @@ setup:
 task: |
   Es wurden drei neue Dateien erstellt: a.txt, b.txt und c.txt.
   Stage nur a.txt und c.txt -- b.txt soll NICHT gestaged werden.
-  So lernst du, gezielt einzelne Dateien fuer einen Commit vorzubereiten.
+  So lernst du, gezielt einzelne Dateien für einen Commit vorzubereiten.
 
 hints:
   - "Du kannst `git add` mit einzelnen Dateinamen aufrufen"
@@ -41,15 +41,15 @@ validation:
 
 ## Selektiv stagen
 
-Eine der grossen Staerken von Git ist, dass du nicht alle Aenderungen
-auf einmal committen musst. Du kannst gezielt auswaehlen, welche
-Dateien in den naechsten Commit aufgenommen werden sollen.
+Eine der grossen Stärken von Git ist, dass du nicht alle Änderungen
+auf einmal committen musst. Du kannst gezielt auswählen, welche
+Dateien in den nächsten Commit aufgenommen werden sollen.
 
-Das ist besonders nuetzlich, wenn du an mehreren Dingen gleichzeitig
+Das ist besonders nützlich, wenn du an mehreren Dingen gleichzeitig
 gearbeitet hast und saubere, thematisch getrennte Commits erstellen
-moechtest.
+möchtest.
 
 ### Was du lernst
 - Wie du gezielt einzelne Dateien mit `git add <datei>` stagen kannst
-- Warum selektives Stagen fuer saubere Commits wichtig ist
+- Warum selektives Stagen für saubere Commits wichtig ist
 - Dass ungestaged Dateien als "untracked" angezeigt werden

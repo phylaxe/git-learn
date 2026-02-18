@@ -9,17 +9,17 @@ setup:
   - cmd: "echo 'Hallo Welt' > hallo.txt"
   - cmd: "git add hallo.txt"
   - cmd: "git commit -m 'Erste Version'"
-  - cmd: "echo 'Hallo schoene Welt' > hallo.txt"
+  - cmd: "echo 'Hallo schöne Welt' > hallo.txt"
 
 task: |
-  Die Datei hallo.txt wurde veraendert. Schau dir den Unterschied
-  mit `git diff` an. Stage dann die Datei mit `git add` und pruefe
+  Die Datei hallo.txt wurde verändert. Schau dir den Unterschied
+  mit `git diff` an. Stage dann die Datei mit `git add` und prüfe
   den Unterschied erneut mit `git diff --staged`. Erstelle am Ende
-  einen Commit mit deinen Aenderungen.
+  einen Commit mit deinen Änderungen.
 
 hints:
-  - "`git diff` zeigt Aenderungen im Working Directory"
-  - "`git diff --staged` zeigt Aenderungen in der Staging Area"
+  - "`git diff` zeigt Änderungen im Working Directory"
+  - "`git diff --staged` zeigt Änderungen in der Staging Area"
   - "Vergiss nicht, am Ende einen Commit zu erstellen"
 
 solution: |
@@ -38,13 +38,13 @@ validation:
 ## Commits vergleichen
 
 Mit `git diff` kannst du sehen, was sich seit dem letzten Commit
-veraendert hat. Das ist besonders nuetzlich, bevor du Aenderungen
+verändert hat. Das ist besonders nützlich, bevor du Änderungen
 stagen oder committen willst.
 
-- `git diff` zeigt Aenderungen, die noch **nicht gestagt** sind
-- `git diff --staged` zeigt Aenderungen, die **bereits gestagt** sind
+- `git diff` zeigt Änderungen, die noch **nicht gestagt** sind
+- `git diff --staged` zeigt Änderungen, die **bereits gestagt** sind
 
 ### Was du lernst
-- Wie du mit `git diff` Aenderungen im Working Directory siehst
-- Wie du mit `git diff --staged` gestagete Aenderungen pruefst
-- Den Unterschied zwischen unstaged und staged Aenderungen
+- Wie du mit `git diff` Änderungen im Working Directory siehst
+- Wie du mit `git diff --staged` gestagete Änderungen prüfst
+- Den Unterschied zwischen unstaged und staged Änderungen
