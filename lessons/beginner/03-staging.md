@@ -14,19 +14,20 @@ setup:
 task: |
   Die Datei README.md wurde bereits veraendert.
   Nutze `git add`, um die Aenderung in die Staging Area zu uebernehmen.
-  Die Staging Area ist wie ein Vorbereitungsbereich fuer deinen naechsten Commit.
+  Erstelle dann einen Commit mit einer passenden Nachricht.
 
 hints:
   - "Die Staging Area ist der Bereich zwischen Working Directory und Repository"
   - "Mit `git add <datei>` fuegest du Aenderungen zur Staging Area hinzu"
-  - "git add README.md"
+  - "git add README.md && git commit -m 'Add neue Zeile'"
 
 solution: |
   git add README.md
+  git commit -m "Add neue Zeile"
 
 validation:
-  - type: staging_area_empty
-    expected: false
+  - type: commit_count
+    expected: 2
   - type: working_tree_clean
     expected: true
 ---
