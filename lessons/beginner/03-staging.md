@@ -1,0 +1,48 @@
+---
+title: "Die Staging Area"
+level: beginner
+order: 3
+points: 10
+
+setup:
+  - cmd: "git init"
+  - cmd: "echo '# Projekt' > README.md"
+  - cmd: "git add README.md"
+  - cmd: "git commit -m 'Initial commit'"
+  - cmd: "echo 'Neue Zeile' >> README.md"
+
+task: |
+  Die Datei README.md wurde bereits veraendert.
+  Nutze `git add`, um die Aenderung in die Staging Area zu uebernehmen.
+  Die Staging Area ist wie ein Vorbereitungsbereich fuer deinen naechsten Commit.
+
+hints:
+  - "Die Staging Area ist der Bereich zwischen Working Directory und Repository"
+  - "Mit `git add <datei>` fuegest du Aenderungen zur Staging Area hinzu"
+  - "git add README.md"
+
+solution: |
+  git add README.md
+
+validation:
+  - type: staging_area_empty
+    expected: false
+  - type: working_tree_clean
+    expected: true
+---
+
+## Die Staging Area
+
+Die Staging Area (auch "Index" genannt) ist ein zentrales Konzept in Git.
+Sie ist ein Zwischenbereich, in dem du Aenderungen sammelst, bevor du
+sie mit einem Commit dauerhaft speicherst.
+
+Der Workflow sieht so aus:
+1. Du aenderst Dateien im **Working Directory**
+2. Du fuegest Aenderungen mit `git add` zur **Staging Area** hinzu
+3. Du speicherst mit `git commit` einen Snapshot im **Repository**
+
+### Was du lernst
+- Was die Staging Area ist und wozu sie dient
+- Wie du mit `git add` Aenderungen stagen kannst
+- Den Drei-Bereiche-Workflow von Git
