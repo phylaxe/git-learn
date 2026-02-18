@@ -1,12 +1,12 @@
 """Lesson list screen — shows all lessons grouped by level."""
 
 from textual.app import ComposeResult
-from textual.containers import VerticalScroll
 from textual.screen import Screen
-from textual.widgets import Header, Footer, Static, ListItem, Label
+from textual.widgets import Header, Footer, Static, ListView, ListItem, Label
 
 from ..lesson_loader import Lesson
 from ..progress import Progress
+from .lesson import LessonScreen
 
 
 LEVEL_LABELS = {
@@ -43,7 +43,6 @@ class LessonListScreen(Screen):
 
     BINDINGS = [
         ("q", "quit", "Quit"),
-        ("enter", "select", "Start Lesson"),
     ]
 
     def __init__(self, lessons: list[Lesson], progress: Progress) -> None:
@@ -53,21 +52,22 @@ class LessonListScreen(Screen):
 
     def compose(self) -> ComposeResult:
         yield Header()
-        with VerticalScroll():
-            current_level = ""
-            for lesson in self.lessons:
-                if lesson.level != current_level:
-                    current_level = lesson.level
-                    label = LEVEL_LABELS.get(current_level, current_level)
-                    yield Static(f"\n  [bold]{label}[/bold]\n")
-                yield LessonListItem(lesson, self._progress)
+        items: list[ListItem] = []
+        current_level = ""
+        for lesson in self.lessons:
+            if lesson.level != current_level:
+                current_level = lesson.level
+                label = LEVEL_LABELS.get(current_level, current_level)
+                items.append(ListItem(Label(f"\n  [bold]{label}[/bold]"), disabled=True))
+            items.append(LessonListItem(lesson, self._progress))
+        yield ListView(*items)
         yield Footer()
 
-    def action_select(self) -> None:
-        focused = self.focused
-        if isinstance(focused, LessonListItem):
-            self.app.selected_lesson = focused.lesson
-            self.app.push_screen("lesson")
+    def on_list_view_selected(self, event: ListView.Selected) -> None:
+        item = event.item
+        if isinstance(item, LessonListItem):
+            self.app.selected_lesson = item.lesson
+            self.app.push_screen(LessonScreen(item.lesson))
 
     def action_quit(self) -> None:
         self.app.exit()
