@@ -8,6 +8,12 @@ from pathlib import Path
 from .lesson_loader import Lesson
 
 
+def _build_task_echo(task: str) -> str:
+    """Build echo statements for multi-line task text."""
+    lines = task.rstrip().split("\n")
+    return "\n".join(f"echo '  {line}'" for line in lines)
+
+
 def get_exercise_path(slug: str) -> Path:
     """Get the path for an exercise repo."""
     safe_name = slug.replace("/", "-")
@@ -40,20 +46,30 @@ def setup_exercise(lesson: Lesson, exercise_dir: Path) -> Path:
         )
 
     # Install command logging bashrc
-    _install_logging(exercise_dir)
+    _install_logging(exercise_dir, lesson)
 
     return exercise_dir
 
 
-def _install_logging(exercise_dir: Path) -> None:
+def _install_logging(exercise_dir: Path, lesson: Lesson) -> None:
     """Install bash functions for check/hint/solution and git command logging."""
     bashrc = exercise_dir / ".git" / "git-learn-bashrc"
     log_file = exercise_dir / ".git" / "git-learn-log"
+
+    # Build hint case statements
+    hint_cases = ""
+    for i, hint in enumerate(lesson.hints):
+        escaped = hint.replace("'", "'\\''")
+        hint_cases += f"        {i}) echo '\\033[33mHint {i + 1}:\\033[0m {escaped}' ;;\n"
+
+    # Escape solution for shell
+    solution_escaped = lesson.solution.replace("'", "'\\''").rstrip()
 
     bashrc.write_text(f"""\
 # git-learn shell environment
 export GIT_LEARN_EXERCISE="{exercise_dir}"
 export GIT_LEARN_LOG="{log_file}"
+_GIT_LEARN_HINT_COUNT=0
 
 # Log git commands
 _git_learn_log() {{
@@ -64,22 +80,31 @@ alias git='_git_learn_log'
 
 # Shell commands
 check() {{
-    echo "__GIT_LEARN_CHECK__"
     exit 0
 }}
 
 hint() {{
-    echo "__GIT_LEARN_HINT__"
+    case $_GIT_LEARN_HINT_COUNT in
+{hint_cases}        *) echo "Keine weiteren Hints verfügbar." ;;
+    esac
+    _GIT_LEARN_HINT_COUNT=$((_GIT_LEARN_HINT_COUNT + 1))
 }}
 
 solution() {{
-    echo "__GIT_LEARN_SOLUTION__"
+    echo ""
+    echo "\\033[31mLösung:\\033[0m"
+    echo '{solution_escaped}'
+    echo ""
 }}
 
 echo ""
-echo "  Git Learn Exercise: {exercise_dir.name}"
-echo "  Type 'check' when done, 'hint' for help, 'solution' to see the answer."
-echo "  Press Ctrl+D to return to Git Learn."
+echo "  \\033[1mGit Learn Exercise: {lesson.title}\\033[0m"
+echo ""
+echo "  \\033[1mAufgabe:\\033[0m"
+{_build_task_echo(lesson.task)}
+echo ""
+echo "  Befehle: check | hint | solution"
+echo "  Ctrl+D um zurückzukehren."
 echo ""
 """)
 
