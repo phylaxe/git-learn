@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "git-learn"
+version = "0.1.0"
+description = "Interactive Git terminal trainer"
+requires-python = ">=3.12"
+dependencies = [
+    "textual>=0.50.0",
+    "click>=8.1.0",
+    "PyYAML>=6.0",
+    "python-frontmatter>=1.1.0",
+    "GitPython>=3.1.0",
+]
+
+[project.scripts]
+git-learn = "git_learn.__main__:cli"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
