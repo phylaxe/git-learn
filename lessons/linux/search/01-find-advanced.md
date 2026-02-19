@@ -18,7 +18,7 @@ task: |
   1. Finde alle .py-Dateien in projekt/ und speichere die Liste in "python-files.txt".
      Jeder Pfad soll auf einer eigenen Zeile stehen.
 
-  2. Fuege allen Dateien im Verzeichnis projekt/tests/ die Ausfuehr-Berechtigung hinzu
+  2. Füge allen Dateien im Verzeichnis projekt/tests/ die Ausführ-Berechtigung hinzu
      (chmod 755). Nutze dazu find mit -exec.
 
   Tipp: find projekt/ -name "*.py" > python-files.txt
@@ -27,8 +27,8 @@ hints:
   - "find sucht rekursiv: find projekt/ -name '*.py'"
   - "Die Ausgabe in eine Datei umleiten: find projekt/ -name '*.py' > python-files.txt"
   - "find mit -exec: find projekt/tests/ -type f -exec chmod 755 {} \\;"
-  - "Der Platzhalter {} steht fuer den gefundenen Dateinamen, \\; beendet den exec-Ausdruck"
-  - "Vollstaendige Loesung: find projekt/ -name '*.py' > python-files.txt && find projekt/tests/ -type f -exec chmod 755 {} \\;"
+  - "Der Platzhalter {} steht für den gefundenen Dateinamen, \\; beendet den exec-Ausdruck"
+  - "Vollständige Lösung: find projekt/ -name '*.py' > python-files.txt && find projekt/tests/ -type f -exec chmod 755 {} \\;"
 
 solution: |
   find projekt/ -name "*.py" > python-files.txt
@@ -55,7 +55,7 @@ Verzeichnisbäume nach Dateien und kann direkt Aktionen auf die gefundenen Datei
 
 ```bash
 find pfad/ -name "muster"          # Nach Dateiname suchen
-find pfad/ -iname "muster"         # Ohne Gross-/Kleinschreibung
+find pfad/ -iname "muster"         # Ohne Groß-/Kleinschreibung
 find . -name "*.py"                # Alle Python-Dateien hier
 find / -name "config.txt" 2>/dev/null  # Im ganzen System
 ```
@@ -69,10 +69,10 @@ find pfad/ -type l                 # Nur symbolische Links
 find pfad/ -type f -name "*.sh"    # Dateien mit .sh-Endung
 ```
 
-### Nach Groesse filtern
+### Nach Größe filtern
 
 ```bash
-find pfad/ -size +10M              # Groesser als 10 Megabyte
+find pfad/ -size +10M              # Größer als 10 Megabyte
 find pfad/ -size -1k               # Kleiner als 1 Kilobyte
 find pfad/ -size 100c              # Genau 100 Bytes
 ```
@@ -80,8 +80,8 @@ find pfad/ -size 100c              # Genau 100 Bytes
 ### Nach Zeit filtern
 
 ```bash
-find pfad/ -mtime -7               # Geaendert in letzten 7 Tagen
-find pfad/ -mtime +30              # Aelter als 30 Tage
+find pfad/ -mtime -7               # Geändert in letzten 7 Tagen
+find pfad/ -mtime +30              # Älter als 30 Tage
 find pfad/ -newer andere.txt       # Neuer als andere.txt
 find pfad/ -atime -1               # Letzter Zugriff heute
 ```
@@ -91,19 +91,19 @@ find pfad/ -atime -1               # Letzter Zugriff heute
 Mit `-exec` kann find direkt Befehle auf gefundene Dateien anwenden:
 
 ```bash
-find pfad/ -name "*.tmp" -exec rm {} \;        # Loeschen
-find pfad/ -name "*.sh" -exec chmod +x {} \;   # Ausfuehrbar machen
+find pfad/ -name "*.tmp" -exec rm {} \;        # Löschen
+find pfad/ -name "*.sh" -exec chmod +x {} \;   # Ausführbar machen
 find pfad/ -type f -exec ls -lh {} \;          # Details anzeigen
 ```
 
-Der `{}` Platzhalter steht fuer den Dateinamen, `\;` beendet den exec-Ausdruck.
+Der `{}` Platzhalter steht für den Dateinamen, `\;` beendet den exec-Ausdruck.
 
-Effizienter mit `+` statt `\;` (uebergibt alle auf einmal):
+Effizienter mit `+` statt `\;` (übergibt alle auf einmal):
 ```bash
 find pfad/ -name "*.tmp" -exec rm {} +
 ```
 
-### Logische Verkuepfungen
+### Logische Verknüpfungen
 
 ```bash
 find pfad/ -name "*.py" -and -type f          # Beides muss stimmen
@@ -116,7 +116,7 @@ find pfad/ \( -name "*.py" -or -name "*.js" \) -type f
 
 ```bash
 find pfad/ -name "*.log" | xargs rm           # Schneller als -exec
-find pfad/ -name "*.py" | xargs wc -l         # Zeilen zaehlen
+find pfad/ -name "*.py" | xargs wc -l         # Zeilen zählen
 find pfad/ -name "*.txt" | xargs grep "Fehler"  # In Dateien suchen
 ```
 
@@ -124,5 +124,5 @@ find pfad/ -name "*.txt" | xargs grep "Fehler"  # In Dateien suchen
 
 ```bash
 find pfad/ -name "*.py" -printf "%f\n"        # Nur Dateiname
-find pfad/ -type f -printf "%s %p\n"          # Groesse und Pfad
+find pfad/ -type f -printf "%s %p\n"          # Größe und Pfad
 ```

@@ -12,7 +12,7 @@ task: |
   Jede Zeile endet mit einem HTTP-Statuscode.
 
   Aufgaben:
-  1. Finde alle Zeilen mit dem Statuscode "200" und zaehle sie.
+  1. Finde alle Zeilen mit dem Statuscode "200" und zähle sie.
      Speichere die Anzahl (nur die Zahl) in die Datei "ok-count.txt".
   2. Leite alle Fehler-Zeilen (also Zeilen OHNE "200") in die Datei "errors.log" um.
 
@@ -22,7 +22,7 @@ hints:
   - "Nutze den Pipe-Operator | um Befehle zu verketten: grep '200' access.log | wc -l"
   - "Der Umleitungsoperator > schreibt die Ausgabe in eine Datei: Befehl > datei.txt"
   - "grep -v kehrt die Suche um und zeigt Zeilen die NICHT passen: grep -v '200' access.log"
-  - "Vollstaendige Loesung: grep '200' access.log | wc -l > ok-count.txt && grep -v '200' access.log > errors.log"
+  - "Vollständige Lösung: grep '200' access.log | wc -l > ok-count.txt && grep -v '200' access.log > errors.log"
 
 solution: |
   grep "200" access.log | wc -l > ok-count.txt
@@ -54,24 +54,24 @@ befehl1 | befehl2 | befehl3
 Beispiele:
 ```bash
 ls -la | grep ".txt"          # Nur .txt-Dateien anzeigen
-cat datei.txt | wc -l         # Zeilen einer Datei zaehlen
+cat datei.txt | wc -l         # Zeilen einer Datei zählen
 ps aux | grep firefox         # Firefox-Prozesse suchen
 ```
 
 ### Ausgabeumleitung `>`
 
-Mit `>` wird die Ausgabe eines Befehls in eine Datei geschrieben (Datei wird ueberschrieben):
+Mit `>` wird die Ausgabe eines Befehls in eine Datei geschrieben (Datei wird überschrieben):
 
 ```bash
 echo "Hallo Welt" > ausgabe.txt
 ls -la > dateiliste.txt
 ```
 
-Mit `>>` wird an eine bestehende Datei angehaengt (kein Ueberschreiben):
+Mit `>>` wird an eine bestehende Datei angehängt (kein Überschreiben):
 
 ```bash
 echo "Zeile 1" > log.txt
-echo "Zeile 2" >> log.txt    # Fuegt hinzu statt zu ueberschreiben
+echo "Zeile 2" >> log.txt    # Fügt hinzu statt zu überschreiben
 ```
 
 ### Eingabeumleitung `<`
@@ -85,7 +85,7 @@ sort < unsortiert.txt
 
 ### Fehlerausgabe umleiten `2>`
 
-Standardmaessig gibt es zwei Ausgabeströme: stdout (1) und stderr (2):
+Standardmäßig gibt es zwei Ausgabeströme: stdout (1) und stderr (2):
 
 ```bash
 befehl 2> fehler.log          # Nur Fehler in Datei
@@ -102,10 +102,10 @@ grep -c "200" access.log      # Anzahl der Treffer
 grep -n "200" access.log      # Mit Zeilennummern
 ```
 
-### wc - Woerter und Zeilen zaehlen
+### wc - Wörter und Zeilen zählen
 
 ```bash
 wc -l datei.txt               # Anzahl der Zeilen
-wc -w datei.txt               # Anzahl der Woerter
+wc -w datei.txt               # Anzahl der Wörter
 wc -c datei.txt               # Anzahl der Zeichen
 ```

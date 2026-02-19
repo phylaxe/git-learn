@@ -10,18 +10,18 @@ setup:
 task: |
   Besitzer und Gruppen verstehen
 
-  Das Uebungsverzeichnis enthaelt:
+  Das Übungsverzeichnis enthält:
     - server.conf — eine Server-Konfigurationsdatei
     - app.dat     — eine Anwendungsdatei
     - shared/     — ein gemeinsames Verzeichnis
 
-  Schritt 1: Finde deinen aktuellen Benutzer und deine primaere Gruppe heraus:
+  Schritt 1: Finde deinen aktuellen Benutzer und deine primäre Gruppe heraus:
     id
 
   Die Ausgabe sieht etwa so aus:
     uid=0(root) gid=0(root) groups=0(root)
 
-  Schritt 2: Wie heisst deine primaere Gruppe?
+  Schritt 2: Wie heißt deine primäre Gruppe?
   Lies den Gruppennamen aus der Ausgabe von 'id' ab (steht nach 'gid=...' in Klammern).
 
   Reiche den Gruppennamen ein mit:
@@ -31,10 +31,10 @@ task: |
     echo "Team-Inhalt" > shared/team.txt
 
 hints:
-  - "Fuehre den Befehl 'id' aus. Er zeigt uid (Benutzer-ID), gid (Gruppen-ID) und alle Gruppen an."
-  - "Die primaere Gruppe steht nach 'gid=' in der Ausgabe von 'id', z.B. 'gid=0(root)' bedeutet, die Gruppe heisst 'root'."
+  - "Führe den Befehl 'id' aus. Er zeigt uid (Benutzer-ID), gid (Gruppen-ID) und alle Gruppen an."
+  - "Die primäre Gruppe steht nach 'gid=' in der Ausgabe von 'id', z.B. 'gid=0(root)' bedeutet, die Gruppe heißt 'root'."
   - "Erstelle die Datei mit: echo \"Team-Inhalt\" > shared/team.txt — oder mit einem beliebigen anderen Inhalt."
-  - "In dieser Uebungsumgebung laeuft alles als Benutzer root. Daher ist die Antwort auf die Frage nach der Gruppe: root"
+  - "In dieser Übungsumgebung läuft alles als Benutzer root. Daher ist die Antwort auf die Frage nach der Gruppe: root"
 
 solution: |
   id
@@ -50,7 +50,7 @@ validation:
 
 ## Besitzer und Gruppen
 
-In Linux hat jede Datei einen **Eigentuemer** (owner) und eine **Gruppe** (group).
+In Linux hat jede Datei einen **Eigentümer** (owner) und eine **Gruppe** (group).
 Das Berechtigungssystem arbeitet auf Basis dieser Zuordnungen.
 
 ### Der id-Befehl
@@ -66,13 +66,13 @@ uid=1001(alice) gid=1001(alice) groups=1001(alice),27(sudo),1002(devs)
 ```
 
 - **uid** — numerische Benutzer-ID und Benutzername
-- **gid** — numerische primaere Gruppen-ID und Gruppenname
-- **groups** — alle Gruppen, denen der Benutzer angehoert
+- **gid** — numerische primäre Gruppen-ID und Gruppenname
+- **groups** — alle Gruppen, denen der Benutzer angehört
 
-### Eigentuemer anzeigen
+### Eigentümer anzeigen
 
 ```bash
-ls -l               # Eigentuemer und Gruppe in Spalten 3 und 4
+ls -l               # Eigentümer und Gruppe in Spalten 3 und 4
 stat datei.txt      # Detaillierte Metadaten inklusive uid/gid
 ```
 
@@ -82,34 +82,34 @@ Beispiel-Ausgabe von `ls -l`:
 -rw-r--r-- 1 alice devs 512 Jan 15 10:00 datei.txt
               ^^^^^  ^^^
               |      Gruppe
-              Eigentuemer
+              Eigentümer
 ```
 
-### Eigentuemer aendern mit chown
+### Eigentümer ändern mit chown
 
 ```bash
-chown bob datei.txt            # Eigentuemer zu bob aendern
-chown bob:devs datei.txt       # Eigentuemer und Gruppe aendern
-chown :devs datei.txt          # Nur Gruppe aendern
-chown -R alice:alice ordner/   # Rekursiv fuer ganzen Ordner
+chown bob datei.txt            # Eigentümer zu bob ändern
+chown bob:devs datei.txt       # Eigentümer und Gruppe ändern
+chown :devs datei.txt          # Nur Gruppe ändern
+chown -R alice:alice ordner/   # Rekursiv für ganzen Ordner
 ```
 
-Hinweis: `chown` erfordert in der Regel Root-Rechte (`sudo`), um den Eigentuemer
-einer Datei zu aendern, die einem anderen Benutzer gehoert.
+Hinweis: `chown` erfordert in der Regel Root-Rechte (`sudo`), um den Eigentümer
+einer Datei zu ändern, die einem anderen Benutzer gehört.
 
-### Gruppe aendern mit chgrp
+### Gruppe ändern mit chgrp
 
 ```bash
-chgrp devs datei.txt           # Gruppe zu devs aendern
-chgrp -R devs projekt/         # Rekursiv fuer ganzen Ordner
+chgrp devs datei.txt           # Gruppe zu devs ändern
+chgrp -R devs projekt/         # Rekursiv für ganzen Ordner
 ```
 
-`chgrp` aendert nur die Gruppe. Benutzer koennen die Gruppe ihrer eigenen Dateien
-auf eine Gruppe setzen, der sie selbst angehoeren.
+`chgrp` ändert nur die Gruppe. Benutzer können die Gruppe ihrer eigenen Dateien
+auf eine Gruppe setzen, der sie selbst angehören.
 
 ### Benutzer und Gruppen verwalten
 
-Die Systemdatenbanken fuer Benutzer und Gruppen:
+Die Systemdatenbanken für Benutzer und Gruppen:
 
 ```bash
 cat /etc/passwd    # Alle Benutzer (Name:Passwort:uid:gid:Info:Home:Shell)
@@ -118,23 +118,23 @@ groups             # Eigene Gruppen anzeigen
 groups bob         # Gruppen von Benutzer bob anzeigen
 ```
 
-### Warum sind Eigentuemer wichtig?
+### Warum sind Eigentümer wichtig?
 
-Das Eigentuemer-Konzept ist fundamental fuer die Linux-Sicherheit:
+Das Eigentümer-Konzept ist fundamental für die Linux-Sicherheit:
 
-- **Isolation:** Prozesse laufen als bestimmter Benutzer und koennen nur auf
-  Dateien zugreifen, fuer die sie berechtigt sind.
+- **Isolation:** Prozesse laufen als bestimmter Benutzer und können nur auf
+  Dateien zugreifen, für die sie berechtigt sind.
 - **Dienste:** Webserver (z.B. `www-data`), Datenbanken (`postgres`) und andere
   Dienste laufen als eigene Benutzer ohne Root-Rechte.
 - **Zusammenarbeit:** Gruppen erlauben mehreren Benutzern gemeinsamen Zugriff
   auf Dateien, ohne allen vollen Zugriff zu geben.
-- **Sicherheit:** Konfigurationsdateien mit Passwoertern (z.B. SSH-Schluessel)
-  sollten nur dem Eigentuemer gehoeren und nur von ihm lesbar sein (`600`).
+- **Sicherheit:** Konfigurationsdateien mit Passwörtern (z.B. SSH-Schlüssel)
+  sollten nur dem Eigentümer gehören und nur von ihm lesbar sein (`600`).
 
 ### Praktisches Beispiel: Webserver-Setup
 
 ```bash
-# Webdateien gehoeren root, aber der Webserver-Gruppe zugaenglich
+# Webdateien gehören root, aber der Webserver-Gruppe zugänglich
 chown -R root:www-data /var/www/html/
 chmod -R 750 /var/www/html/
 

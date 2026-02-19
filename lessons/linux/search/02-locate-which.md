@@ -16,12 +16,12 @@ task: |
      Nutze dazu den Befehl which. Reiche den Pfad mit check ein.
      Beispiel: check "/bin/bash"
 
-  2. Finde heraus, was fuer ein Typ der Befehl "cd" ist (built-in, alias, etc.).
+  2. Finde heraus, was für ein Typ der Befehl "cd" ist (built-in, alias, etc.).
      Nutze dazu den Befehl type und speichere die Ausgabe in "cd-type.txt".
      Beispiel: type cd > cd-type.txt
 
 hints:
-  - "which zeigt den vollstaendigen Pfad eines Programms: which bash"
+  - "which zeigt den vollständigen Pfad eines Programms: which bash"
   - "type zeigt an, was ein Befehl ist: type cd"
   - "type cd > cd-type.txt speichert die Ausgabe in eine Datei"
   - "Reiche den Pfad von bash ein: check \"/bin/bash\" oder check \"/usr/bin/bash\""
@@ -66,15 +66,15 @@ type ll             # ll is aliased to `ls -la`
 type python3        # python3 is /usr/bin/python3
 ```
 
-Mouegliche Typen:
+Mögliche Typen:
 - **builtin** – Eingebauter Shell-Befehl (z.B. cd, echo, pwd)
-- **alias** – Ein Alias fuer einen anderen Befehl
+- **alias** – Ein Alias für einen anderen Befehl
 - **function** – Eine Shell-Funktion
 - **file** – Ein externes Programm (eine Datei)
 
 ### whereis - Noch mehr Informationen
 
-`whereis` sucht nach Binaerdatei, Quellcode und Manpage:
+`whereis` sucht nach Binärdatei, Quellcode und Manpage:
 
 ```bash
 whereis bash        # bash: /bin/bash /usr/share/man/man1/bash.1.gz
@@ -101,7 +101,7 @@ echo $PATH          # Zeigt alle Suchpfade
 
 Eigene Skripte in `~/bin/` erreichbar machen:
 ```bash
-export PATH="$PATH:$HOME/bin"   # Zu .bashrc hinzufuegen
+export PATH="$PATH:$HOME/bin"   # Zu .bashrc hinzufügen
 ```
 
 ### Praxisbeispiel
