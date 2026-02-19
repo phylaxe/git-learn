@@ -26,11 +26,11 @@ task: |
 
 hints:
   - "Programm im Hintergrund starten: ./worker.sh &"
-  - "$! enthaelt die PID des letzten Hintergrundprozesses: echo $! > worker-pid.txt"
+  - "$! enthält die PID des letzten Hintergrundprozesses: echo $! > worker-pid.txt"
   - "jobs -l zeigt alle Hintergrundprozesse mit PID an"
-  - "ps aux | grep worker findet den Prozess falls $! nicht mehr verfuegbar ist"
+  - "ps aux | grep worker findet den Prozess falls $! nicht mehr verfügbar ist"
   - "Prozess beenden: kill PIDNUMMER oder kill $(cat worker-pid.txt)"
-  - "Vollstaendige Loesung: ./worker.sh & && sleep 3 && echo $! > worker-pid.txt && kill $(cat worker-pid.txt)"
+  - "Vollständige Lösung: ./worker.sh & && sleep 3 && echo $! > worker-pid.txt && kill $(cat worker-pid.txt)"
 
 solution: |
   ./worker.sh &
@@ -84,7 +84,7 @@ fg %2                        # Job-Nummer 2 in den Vordergrund
 Signale sind Nachrichten an Prozesse:
 
 ```bash
-kill PID                     # SIGTERM senden (hoeflich beenden)
+kill PID                     # SIGTERM senden (höflich beenden)
 kill -9 PID                  # SIGKILL senden (sofort beenden)
 kill -15 PID                 # SIGTERM explizit
 kill -SIGTERM PID            # Mit Signalname
@@ -103,13 +103,13 @@ pkill -f worker.sh           # Nach Prozessname suchen und beenden
 | SIGHUP   | 1      | Konfiguration neu laden            |
 | SIGCONT  | 18     | Pausierten Prozess fortsetzen      |
 
-### Tastenkuerzel fuer Prozesse
+### Tastenkürzel für Prozesse
 
 - `Ctrl+C` – Prozess beenden (SIGINT)
 - `Ctrl+Z` – Prozess pausieren (SIGTSTP)
-- `Ctrl+D` – Eingabe beenden (kein Signal, schliesst stdin)
+- `Ctrl+D` – Eingabe beenden (kein Signal, schließt stdin)
 
-### Spezielle Shell-Variablen fuer Prozesse
+### Spezielle Shell-Variablen für Prozesse
 
 ```bash
 echo $$              # PID der aktuellen Shell
@@ -129,7 +129,7 @@ nohup ./script.sh > ausgabe.log 2>&1 &  # Mit Ausgabe in Datei
 
 ### screen und tmux
 
-Fuer persistente Sessions gibt es screen und tmux:
+Für persistente Sessions gibt es screen und tmux:
 
 ```bash
 screen -S meinesession       # Neue screen-Session

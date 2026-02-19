@@ -10,7 +10,7 @@ setup:
 task: |
   Berechtigungen lesen mit ls -l
 
-  Das Uebungsverzeichnis enthaelt drei Objekte:
+  Das Übungsverzeichnis enthält drei Objekte:
     - datei.txt  — eine einfache Textdatei
     - ordner/    — ein Verzeichnis
     - script.sh  — ein Shell-Skript
@@ -24,9 +24,9 @@ task: |
 
   Die ersten 10 Zeichen sind die Berechtigungen:
     - Zeichen 1:    Dateityp (- = Datei, d = Verzeichnis)
-    - Zeichen 2-4:  Berechtigungen des Eigentuemers (rwx)
+    - Zeichen 2-4:  Berechtigungen des Eigentümers (rwx)
     - Zeichen 5-7:  Berechtigungen der Gruppe (---)
-    - Zeichen 8-10: Berechtigungen fuer alle anderen (---)
+    - Zeichen 8-10: Berechtigungen für alle anderen (---)
 
   Was sind die Berechtigungen von script.sh in symbolischer Notation?
   Gib nur den 9-stelligen Berechtigungsstring ohne den Dateityp ein,
@@ -36,10 +36,10 @@ task: |
     check "rwx------"
 
 hints:
-  - "Fuehre 'ls -l' aus und lies die erste Spalte der Ausgabe."
-  - "Die Berechtigungszeichenkette hat 10 Zeichen. Das erste Zeichen ist der Dateityp (- oder d). Die naechsten 9 Zeichen sind die eigentlichen Berechtigungen."
-  - "Die 9 Berechtigungszeichen sind in drei Gruppen zu je 3 aufgeteilt: Eigentuemer (owner), Gruppe (group), Andere (others). r=lesen, w=schreiben, x=ausfuehren, -=keine Berechtigung."
-  - "script.sh wurde mit chmod 700 erstellt. Das bedeutet: Eigentuemer darf alles (rwx), Gruppe darf nichts (---), Andere duerfen nichts (---). Die Antwort ist also: rwx------"
+  - "Führe 'ls -l' aus und lies die erste Spalte der Ausgabe."
+  - "Die Berechtigungszeichenkette hat 10 Zeichen. Das erste Zeichen ist der Dateityp (- oder d). Die nächsten 9 Zeichen sind die eigentlichen Berechtigungen."
+  - "Die 9 Berechtigungszeichen sind in drei Gruppen zu je 3 aufgeteilt: Eigentümer (owner), Gruppe (group), Andere (others). r=lesen, w=schreiben, x=ausführen, -=keine Berechtigung."
+  - "script.sh wurde mit chmod 700 erstellt. Das bedeutet: Eigentümer darf alles (rwx), Gruppe darf nichts (---), Andere dürfen nichts (---). Die Antwort ist also: rwx------"
 
 solution: |
   ls -l
@@ -52,7 +52,7 @@ validation:
 
 ## Berechtigungen lesen
 
-Linux verwaltet den Zugriff auf Dateien und Verzeichnisse ueber ein Berechtigungssystem.
+Linux verwaltet den Zugriff auf Dateien und Verzeichnisse über ein Berechtigungssystem.
 Mit `ls -l` kannst du diese Berechtigungen sichtbar machen.
 
 ### Das Berechtigungsformat
@@ -65,14 +65,14 @@ drwxr-x--- 3 alice devs 4096 Jan 15 09:00 ordner/
 -rw-r--r-- 1 alice devs  512 Jan 15 08:00 datei.txt
 ```
 
-Die erste Spalte (z.B. `-rwxr-xr--`) enthaelt 10 Zeichen:
+Die erste Spalte (z.B. `-rwxr-xr--`) enthält 10 Zeichen:
 
 | Position | Bedeutung |
 |----------|-----------|
 | 1        | Dateityp: `-` = Datei, `d` = Verzeichnis, `l` = Symlink |
-| 2–4      | Eigentuemer-Berechtigungen (owner) |
+| 2–4      | Eigentümer-Berechtigungen (owner) |
 | 5–7      | Gruppen-Berechtigungen (group) |
-| 8–10     | Berechtigungen fuer alle anderen (others) |
+| 8–10     | Berechtigungen für alle anderen (others) |
 
 ### Die drei Berechtigungstypen
 
@@ -80,7 +80,7 @@ Jede der drei Gruppen besteht aus drei Zeichen:
 
 - **r** (read) — Lesen erlaubt
 - **w** (write) — Schreiben erlaubt
-- **x** (execute) — Ausfuehren erlaubt (bei Verzeichnissen: Betreten)
+- **x** (execute) — Ausführen erlaubt (bei Verzeichnissen: Betreten)
 - **-** — diese Berechtigung fehlt
 
 ### Beispiel: `rwxr-x---`
@@ -89,21 +89,21 @@ Jede der drei Gruppen besteht aus drei Zeichen:
 rwx  r-x  ---
  |    |    |
  |    |    Andere: kein Zugriff
- |    Gruppe: lesen + ausfuehren
- Eigentuemer: lesen + schreiben + ausfuehren
+ |    Gruppe: lesen + ausführen
+ Eigentümer: lesen + schreiben + ausführen
 ```
 
-### Weitere nuetzliche Optionen
+### Weitere nützliche Optionen
 
 ```bash
 ls -la          # Auch versteckte Dateien anzeigen (beginnen mit .)
-ls -lh          # Dateigroessen lesbar formatieren (K, M, G)
+ls -lh          # Dateigrößen lesbar formatieren (K, M, G)
 stat datei.txt  # Detaillierte Metadaten einer Datei
 ```
 
 ### Warum sind Berechtigungen wichtig?
 
-Berechtigungen schuetzen Dateien vor unbeabsichtigtem oder boesartigem Zugriff.
-Skripte muessen ausfuehrbar sein (`x`), Konfigurationsdateien mit Passwoertern
-sollten nur vom Eigentuemer lesbar sein (`600`), und oeffentliche Webinhalte
-benoetigen Leserechte fuer alle (`644` oder `755`).
+Berechtigungen schützen Dateien vor unbeabsichtigtem oder bösartigem Zugriff.
+Skripte müssen ausführbar sein (`x`), Konfigurationsdateien mit Passwörtern
+sollten nur vom Eigentümer lesbar sein (`600`), und öffentliche Webinhalte
+benötigen Leserechte für alle (`644` oder `755`).

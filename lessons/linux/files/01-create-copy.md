@@ -35,7 +35,7 @@ validation:
 
 ## Dateien erstellen und kopieren
 
-Das Anlegen von Verzeichnissen und das Kopieren von Dateien sind grundlegende Aufgaben im Terminal. Diese drei Befehle wirst du staendig verwenden.
+Das Anlegen von Verzeichnissen und das Kopieren von Dateien sind grundlegende Aufgaben im Terminal. Diese drei Befehle wirst du ständig verwenden.
 
 ### `touch` — Leere Datei erstellen
 
@@ -60,7 +60,7 @@ Mit der Option `-p` werden alle fehlenden Elternverzeichnisse automatisch miters
 $ mkdir -p projekte/webseite/css
 ```
 
-Ohne `-p` wuerde der Befehl scheitern, wenn `projekte/webseite/` noch nicht existiert.
+Ohne `-p` würde der Befehl scheitern, wenn `projekte/webseite/` noch nicht existiert.
 
 ### `cp` — Dateien kopieren
 
@@ -76,7 +76,7 @@ Die Option `-r` (rekursiv) ist notwendig, um Verzeichnisse mit ihrem gesamten In
 
 ### `mv` — Dateien verschieben oder umbenennen
 
-`mv` funktioniert aehnlich wie `cp`, loescht aber die Quelldatei:
+`mv` funktioniert ähnlich wie `cp`, löscht aber die Quelldatei:
 
 ```
 $ mv alt.txt neu.txt        # Umbenennen

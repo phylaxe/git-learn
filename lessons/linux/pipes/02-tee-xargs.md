@@ -12,11 +12,11 @@ setup:
 task: |
   Du hast zwei Aufgaben:
 
-  1. Finde alle einzigartigen Fruechte in fruits.txt (keine Duplikate).
+  1. Finde alle einzigartigen Früchte in fruits.txt (keine Duplikate).
      Nutze sort und uniq mit Pipes. Verwende tee um das Ergebnis gleichzeitig
      anzuzeigen UND in "unique-fruits.txt" zu speichern.
 
-  2. Loesche alle .tmp-Dateien im Verzeichnis cleanup/ mit find und xargs.
+  2. Lösche alle .tmp-Dateien im Verzeichnis cleanup/ mit find und xargs.
      Die Datei keep.txt soll dabei erhalten bleiben.
 
   Tipp: sort fruits.txt | uniq | tee unique-fruits.txt
@@ -26,8 +26,8 @@ hints:
   - "sort sortiert die Ausgabe alphabetisch: sort fruits.txt"
   - "uniq entfernt aufeinanderfolgende Duplikate (daher erst sort): sort fruits.txt | uniq"
   - "tee schreibt gleichzeitig auf den Bildschirm UND in eine Datei: befehl | tee datei.txt"
-  - "find gibt Dateinamen aus, xargs uebergibt sie als Argumente: find cleanup/ -name '*.tmp' | xargs rm"
-  - "Vollstaendige Loesung: sort fruits.txt | uniq | tee unique-fruits.txt && find cleanup/ -name '*.tmp' | xargs rm"
+  - "find gibt Dateinamen aus, xargs übergibt sie als Argumente: find cleanup/ -name '*.tmp' | xargs rm"
+  - "Vollständige Lösung: sort fruits.txt | uniq | tee unique-fruits.txt && find cleanup/ -name '*.tmp' | xargs rm"
 
 solution: |
   sort fruits.txt | uniq | tee unique-fruits.txt
@@ -55,14 +55,14 @@ wie ein T-Rohr in der Wasserleitung:
 
 ```bash
 befehl | tee ausgabe.txt          # Anzeigen UND speichern
-befehl | tee -a ausgabe.txt       # Anhaengen statt ueberschreiben
+befehl | tee -a ausgabe.txt       # Anhängen statt überschreiben
 befehl | tee datei.txt | weiter   # In Kette einbauen
 ```
 
 Beispiel:
 ```bash
 ls -la | tee dateiliste.txt | grep ".py"
-# Speichert die vollstaendige Liste, zeigt nur .py-Dateien
+# Speichert die vollständige Liste, zeigt nur .py-Dateien
 ```
 
 ### sort und uniq - Duplikate entfernen
@@ -71,28 +71,28 @@ Das klassische Muster zum Entfernen von Duplikaten:
 
 ```bash
 sort datei.txt | uniq            # Einzigartige Zeilen
-sort datei.txt | uniq -c         # Mit Haeufigkeit
+sort datei.txt | uniq -c         # Mit Häufigkeit
 sort datei.txt | uniq -d         # Nur Duplikate anzeigen
 sort datei.txt | uniq -u         # Nur einmalige Zeilen
 ```
 
-Wichtig: `uniq` prueft nur aufeinanderfolgende Zeilen, daher immer erst `sort`!
+Wichtig: `uniq` prüft nur aufeinanderfolgende Zeilen, daher immer erst `sort`!
 
 ### xargs - Argumente aus stdin
 
-`xargs` liest Zeilen von stdin und uebergibt sie als Argumente an einen Befehl:
+`xargs` liest Zeilen von stdin und übergibt sie als Argumente an einen Befehl:
 
 ```bash
-find . -name "*.tmp" | xargs rm           # Dateien loeschen
-find . -name "*.txt" | xargs wc -l        # Zeilen zaehlen
+find . -name "*.tmp" | xargs rm           # Dateien löschen
+find . -name "*.txt" | xargs wc -l        # Zeilen zählen
 echo "datei1 datei2 datei3" | xargs ls    # Dateien auflisten
 ```
 
-Nuetzliche xargs-Optionen:
+Nützliche xargs-Optionen:
 ```bash
 xargs -n 1 befehl     # Einen Wert pro Aufruf
-xargs -I {} befehl {} # Platzhalter {} fuer den Wert
-xargs -p befehl       # Vor jedem Aufruf bestaetigen
+xargs -I {} befehl {} # Platzhalter {} für den Wert
+xargs -p befehl       # Vor jedem Aufruf bestätigen
 ```
 
 ### find - Dateien suchen und verarbeiten
@@ -100,14 +100,14 @@ xargs -p befehl       # Vor jedem Aufruf bestaetigen
 ```bash
 find verzeichnis/ -name "*.tmp"           # Nach Name suchen
 find verzeichnis/ -type f -name "*.log"   # Nur Dateien
-find verzeichnis/ -mtime +7               # Aelter als 7 Tage
-find verzeichnis/ -exec rm {} \;          # Ausfuehren fuer jede Datei
-find verzeichnis/ -name "*.tmp" | xargs rm  # Mit xargs loeschen
+find verzeichnis/ -mtime +7               # Älter als 7 Tage
+find verzeichnis/ -exec rm {} \;          # Ausführen für jede Datei
+find verzeichnis/ -name "*.tmp" | xargs rm  # Mit xargs löschen
 ```
 
 ### Befehlsverkettung mit Pipes
 
 ```bash
 cat datei.txt | sort | uniq | tee ergebnis.txt | wc -l
-# Liest -> sortiert -> dedupliziert -> speichert -> zaehlt
+# Liest -> sortiert -> dedupliziert -> speichert -> zählt
 ```

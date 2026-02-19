@@ -43,7 +43,7 @@ validation:
 
 ## Wildcards: Die Macht der Muster
 
-Wildcards (auch Glob-Muster genannt) erlauben es, viele Dateien auf einmal mit einem einzigen Befehl anzusprechen. Die Shell expandiert diese Muster, bevor der Befehl ausgefuehrt wird.
+Wildcards (auch Glob-Muster genannt) erlauben es, viele Dateien auf einmal mit einem einzigen Befehl anzusprechen. Die Shell expandiert diese Muster, bevor der Befehl ausgeführt wird.
 
 ### `*` — Beliebig viele Zeichen
 

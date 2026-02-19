@@ -1,5 +1,5 @@
 ---
-title: "Den Ueberblick behalten"
+title: "Den Überblick behalten"
 level: navigation
 order: 3
 points: 15
@@ -9,7 +9,7 @@ setup:
   - cmd: "touch src/components/Button.tsx src/components/Header.tsx src/utils/helpers.ts src/api/routes.ts tests/unit/test_button.py tests/integration/test_api.py docs/README.md"
 
 task: |
-  Verschaffe dir einen Ueberblick ueber die Projektstruktur und finde alle TypeScript-Dateien.
+  Verschaffe dir einen Überblick über die Projektstruktur und finde alle TypeScript-Dateien.
 
   1. Zeige die Verzeichnisstruktur mit `tree` an
   2. Finde alle `.ts` und `.tsx` Dateien mit `find`
@@ -18,11 +18,11 @@ task: |
      find . -name "*.ts" -o -name "*.tsx" > typescript-files.txt
 
 hints:
-  - "`tree` zeigt den Verzeichnisbaum uebersichtlich an (ggf. mit `sudo apt install tree` installieren)"
+  - "`tree` zeigt den Verzeichnisbaum übersichtlich an (ggf. mit `sudo apt install tree` installieren)"
   - "`find . -name \"*.ts\"` sucht alle Dateien mit der Endung `.ts` ab dem aktuellen Verzeichnis"
   - "Mit `-o` (oder) kannst du mehrere Suchmuster kombinieren: `find . -name \"*.ts\" -o -name \"*.tsx\"`"
-  - "`>` leitet die Ausgabe in eine Datei um (ueberschreibt die Datei)"
-  - "`>>` haengt die Ausgabe an eine bestehende Datei an"
+  - "`>` leitet die Ausgabe in eine Datei um (überschreibt die Datei)"
+  - "`>>` hängt die Ausgabe an eine bestehende Datei an"
 
 solution: |
   tree
@@ -36,9 +36,9 @@ validation:
     contains: "Button.tsx"
 ---
 
-## Den Ueberblick behalten
+## Den Überblick behalten
 
-In groesseren Projekten ist es wichtig, sich schnell einen Ueberblick ueber die Dateistruktur zu verschaffen und gezielt nach Dateien suchen zu koennen.
+In größeren Projekten ist es wichtig, sich schnell einen Überblick über die Dateistruktur zu verschaffen und gezielt nach Dateien suchen zu können.
 
 ### `tree` — Verzeichnisbaum anzeigen
 
@@ -64,7 +64,7 @@ $ tree
         └── test_button.py
 ```
 
-Nuetzliche Optionen:
+Nützliche Optionen:
 
 | Befehl          | Beschreibung                              |
 |-----------------|-------------------------------------------|
@@ -72,7 +72,7 @@ Nuetzliche Optionen:
 | `tree -L 2`     | Nur 2 Ebenen tief anzeigen               |
 | `tree -a`       | Auch versteckte Dateien anzeigen          |
 | `tree -d`       | Nur Verzeichnisse anzeigen               |
-| `tree -I node_modules` | Verzeichnis ausschliessen         |
+| `tree -I node_modules` | Verzeichnis ausschließen          |
 
 ### `find` — Dateien suchen
 
@@ -82,15 +82,15 @@ Nuetzliche Optionen:
 find [startpfad] [optionen] [suchmuster]
 ```
 
-Haeufige Anwendungsbeispiele:
+Häufige Anwendungsbeispiele:
 
 ```bash
 find . -name "*.py"           # Alle Python-Dateien
 find . -name "*.ts" -o -name "*.tsx"  # TypeScript-Dateien (oder)
 find . -type d                # Nur Verzeichnisse
-find . -type f -size +1M      # Dateien groesser als 1 MB
+find . -type f -size +1M      # Dateien größer als 1 MB
 find . -newer README.md       # Dateien neuer als README.md
-find . -name "*.log" -delete  # Alle Log-Dateien loeschen
+find . -name "*.log" -delete  # Alle Log-Dateien löschen
 ```
 
 ### Ausgabe umleiten mit `>`
@@ -99,7 +99,7 @@ Mit `>` kannst du die Ausgabe eines Befehls in eine Datei schreiben:
 
 ```bash
 find . -name "*.ts" > typescript-files.txt   # Ergebnis speichern
-ls -la >> log.txt                            # An Datei anhaengen
+ls -la >> log.txt                            # An Datei anhängen
 ```
 
-Das ist besonders nuetzlich, um Suchergebnisse fuer spaetere Verwendung zu speichern.
+Das ist besonders nützlich, um Suchergebnisse für spätere Verwendung zu speichern.

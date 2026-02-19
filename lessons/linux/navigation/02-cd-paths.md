@@ -12,7 +12,7 @@ task: |
   Navigiere durch den Verzeichnisbaum und hinterlasse eine Spur.
 
   1. Wechsle in das Verzeichnis `projekte/webseite/css` (relativer Pfad)
-  2. Wechsle zurueck nach `/exercise` (absoluter Pfad)
+  2. Wechsle zurück nach `/exercise` (absoluter Pfad)
   3. Wechsle nach `docs/archiv` (relativer Pfad)
   4. Erstelle dort eine Datei namens `hier.txt`:
 
@@ -21,9 +21,9 @@ task: |
 hints:
   - "`cd verzeichnis` wechselt in ein Unterverzeichnis (relativer Pfad)"
   - "Absolute Pfade beginnen mit `/`, z.B. `cd /tmp/git-learn/exercise`"
-  - "`cd ..` wechselt ins uebergeordnete Verzeichnis"
+  - "`cd ..` wechselt ins übergeordnete Verzeichnis"
   - "`cd ~` oder einfach `cd` wechselt ins Home-Verzeichnis"
-  - "`cd -` wechselt zurueck ins zuletzt besuchte Verzeichnis"
+  - "`cd -` wechselt zurück ins zuletzt besuchte Verzeichnis"
 
 solution: |
   cd projekte/webseite/css
@@ -44,10 +44,10 @@ Das Dateisystem ist wie ein Baum aufgebaut: Es gibt eine Wurzel (`/`) und von do
 
 ```
 cd verzeichnis     # Wechsle in ein Unterverzeichnis
-cd ..              # Wechsle ins uebergeordnete Verzeichnis
+cd ..              # Wechsle ins übergeordnete Verzeichnis
 cd ~               # Wechsle ins Home-Verzeichnis
 cd /               # Wechsle ins Wurzelverzeichnis
-cd -               # Zurueck ins zuletzt besuchte Verzeichnis
+cd -               # Zurück ins zuletzt besuchte Verzeichnis
 ```
 
 ### Absolute vs. relative Pfade
@@ -62,7 +62,7 @@ $ pwd
 /exercise/projekte/webseite/css
 ```
 
-**Absolute Pfade** beginnen immer mit `/` und sind unabhaengig vom aktuellen Verzeichnis:
+**Absolute Pfade** beginnen immer mit `/` und sind unabhängig vom aktuellen Verzeichnis:
 
 ```
 $ cd /exercise/docs/archiv
@@ -75,7 +75,7 @@ $ pwd
 | Symbol | Bedeutung                        |
 |--------|----------------------------------|
 | `.`    | Aktuelles Verzeichnis            |
-| `..`   | Uebergeordnetes Verzeichnis      |
+| `..`   | Übergeordnetes Verzeichnis       |
 | `~`    | Home-Verzeichnis des Benutzers   |
 | `/`    | Wurzelverzeichnis des Systems    |
 
@@ -86,6 +86,6 @@ $ cd ../../..     # Drei Ebenen nach oben
 $ cd ../geschwister  # Eine Ebene hoch, dann in "geschwister"
 ```
 
-### Tab-Vervollstaendigung
+### Tab-Vervollständigung
 
-Druecke `Tab`, um Pfade automatisch zu vervollstaendigen. Das spart Tipparbeit und verhindert Tippfehler.
+Drücke `Tab`, um Pfade automatisch zu vervollständigen. Das spart Tipparbeit und verhindert Tippfehler.

@@ -39,7 +39,7 @@ Das Terminal kennt immer ein aktuelles Arbeitsverzeichnis. Bevor du Dateien erst
 
 ### `pwd` — Print Working Directory
 
-`pwd` gibt den vollstaendigen Pfad des aktuellen Verzeichnisses aus:
+`pwd` gibt den vollständigen Pfad des aktuellen Verzeichnisses aus:
 
 ```
 $ pwd
@@ -48,15 +48,15 @@ $ pwd
 
 ### `ls` — Dateien auflisten
 
-`ls` zeigt den Inhalt eines Verzeichnisses an. Es gibt verschiedene nuetzliche Optionen:
+`ls` zeigt den Inhalt eines Verzeichnisses an. Es gibt verschiedene nützliche Optionen:
 
 | Befehl    | Bedeutung                                          |
 |-----------|----------------------------------------------------|
 | `ls`      | Einfache Auflistung                                |
-| `ls -l`   | Langformat mit Berechtigungen, Groesse und Datum   |
+| `ls -l`   | Langformat mit Berechtigungen, Größe und Datum     |
 | `ls -a`   | Alle Dateien, auch versteckte (beginnen mit `.`)   |
 | `ls -la`  | Kombination: Langformat und versteckte Dateien     |
-| `ls -lh`  | Langformat mit lesbaren Dateigroessen (KB, MB)     |
+| `ls -lh`  | Langformat mit lesbaren Dateigrößen (KB, MB)       |
 
 ### Beispiel: `ls -la`
 
@@ -70,6 +70,6 @@ drwxr-xr-x  3 user group   96 Feb 19 10:00 docs
 drwxr-xr-x  3 user group   96 Feb 19 10:00 projekte
 ```
 
-- `.` steht fuer das aktuelle Verzeichnis
-- `..` steht fuer das uebergeordnete Verzeichnis
-- Die erste Spalte zeigt die Dateiberechtigungen (z.B. `drwxr-xr-x` fuer Verzeichnisse)
+- `.` steht für das aktuelle Verzeichnis
+- `..` steht für das übergeordnete Verzeichnis
+- Die erste Spalte zeigt die Dateiberechtigungen (z.B. `drwxr-xr-x` für Verzeichnisse)
