@@ -63,7 +63,11 @@ def validate_symlink_target(rule: dict, repo: Path) -> ValidationResult:
     passed = actual == expected
     return ValidationResult(
         passed=passed,
-        message=f"Symlink '{rule['path']}' -> '{actual}' ({'correct' if passed else f'expected {expected}'})",
+        message=(
+            f"Symlink '{rule['path']}' -> '{actual}' (korrekt)" if passed
+            else f"Symlink '{rule['path']}' zeigt auf '{actual}', erwartet '{expected}' "
+                 f"(Tipp: Symlink-Pfade werden relativ zum Link aufgelöst, nicht zum aktuellen Verzeichnis)"
+        ),
         rule_type="symlink_target",
     )
 

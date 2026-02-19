@@ -9,14 +9,18 @@ setup:
 
 task: |
   Lerne, wie man Dateien löscht und symbolische Links erstellt.
-  Führe alle Befehle im Übungsverzeichnis (/exercise) aus.
 
   1. Lösche die Datei `alt/temp.txt` mit `rm`
   2. Lösche die Datei `alt/debug.log` mit `rm`
   3. Erstelle einen symbolischen Link:
      ln -s ../alt/daten/config.txt neu/config-link
-     (Der relative Pfad wird vom Ort des Links aus aufgelöst:
-      neu/ → .. → /exercise → alt/daten/config.txt)
+
+     Wichtig: Symlink-Pfade werden relativ zum Link aufgelöst,
+     NICHT relativ zu deinem aktuellen Verzeichnis!
+     Der Link liegt in neu/ — von dort muss er die Datei finden:
+       neu/config-link → ../  (= zurück nach /exercise)
+                       → alt/daten/config.txt
+     Deshalb braucht es das ../ am Anfang.
 
 hints:
   - "`rm alt/temp.txt` löscht die Datei unwiderruflich — es gibt keinen Papierkorb"
