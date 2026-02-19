@@ -2,15 +2,17 @@
 
 import asyncio
 
-from git_learn.app import GitLearnApp
+from terminal_learn.app import TerminalLearnApp
+from terminal_learn.modules import get_module
 
 from click.testing import CliRunner
-from git_learn.__main__ import cli
+from terminal_learn.__main__ import cli
 
 
 def test_app_starts() -> None:
     async def _test() -> None:
-        app = GitLearnApp()
+        config = get_module("git")
+        app = TerminalLearnApp(config)
         async with app.run_test() as pilot:
             assert app.title == "Git Learn"
 

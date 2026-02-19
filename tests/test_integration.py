@@ -3,13 +3,13 @@
 import subprocess
 from pathlib import Path
 
-from git_learn.lesson_loader import load_lesson
-from git_learn.setup_exercise import setup_exercise
-from git_learn.validator import validate_all
+from terminal_learn.lesson_loader import load_lesson
+from terminal_learn.setup_exercise import setup_exercise
+from terminal_learn.validator import validate_all
 
 
 def test_beginner_01_init_full_flow(tmp_path: Path) -> None:
-    lesson_path = Path(__file__).parent.parent / "lessons" / "beginner" / "01-init.md"
+    lesson_path = Path(__file__).parent.parent / "lessons" / "git" / "beginner" / "01-init.md"
     if not lesson_path.exists():
         return
     lesson = load_lesson(lesson_path)
@@ -22,7 +22,7 @@ def test_beginner_01_init_full_flow(tmp_path: Path) -> None:
 
 
 def test_beginner_05_commit_full_flow(tmp_path: Path) -> None:
-    lesson_path = Path(__file__).parent.parent / "lessons" / "beginner" / "05-commit.md"
+    lesson_path = Path(__file__).parent.parent / "lessons" / "git" / "beginner" / "05-commit.md"
     if not lesson_path.exists():
         return
     lesson = load_lesson(lesson_path)

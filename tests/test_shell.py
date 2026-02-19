@@ -2,13 +2,13 @@
 
 from pathlib import Path
 
-from git_learn.shell import build_shell_env, ShellResult
+from terminal_learn.shell import build_shell_env, ShellResult
 
 
 def test_build_shell_env(tmp_path: Path) -> None:
     env = build_shell_env(tmp_path)
-    assert env["GIT_LEARN_EXERCISE"] == str(tmp_path)
-    assert "GIT_LEARN_LOG" in env
+    assert env["TERMINAL_LEARN_EXERCISE"] == str(tmp_path)
+    assert "TERMINAL_LEARN_LOG" in env
 
 
 def test_shell_result_from_check() -> None:
