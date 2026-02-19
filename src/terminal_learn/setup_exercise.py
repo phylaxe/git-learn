@@ -110,7 +110,7 @@ def _install_logging(
     hint_cases = ""
     for i, hint in enumerate(lesson.hints):
         escaped = hint.replace("'", "'\\''")
-        hint_cases += f"        {i}) echo '\\033[33mHint {i + 1}:\\033[0m {escaped}' ;;\n"
+        hint_cases += f"        {i}) printf '\\033[33mHint {i + 1}:\\033[0m {escaped}\\n' ;;\n"
 
     # Escape solution for shell
     solution_escaped = lesson.solution.replace("'", "'\\''").rstrip()
@@ -145,21 +145,21 @@ hint() {{
 }}
 
 solution() {{
-    echo ""
-    echo "\\033[31mLösung:\\033[0m"
+    printf '\\n'
+    printf '\\033[31mLösung:\\033[0m\\n'
     echo '{solution_escaped}'
-    echo ""
+    printf '\\n'
 }}
 
-echo ""
-echo "  \\033[1mTerminal Learn: {lesson.title}\\033[0m"
-echo ""
-echo "  \\033[1mAufgabe:\\033[0m"
+printf '\\n'
+printf '  \\033[1mTerminal Learn: {lesson.title}\\033[0m\\n'
+printf '\\n'
+printf '  \\033[1mAufgabe:\\033[0m\\n'
 {_build_task_echo(lesson.task)}
-echo ""
+printf '\\n'
 echo "  Befehle: check | hint | solution"
 echo "  Ctrl+D um zurückzukehren."
-echo ""
+printf '\\n'
 """)
 
 
