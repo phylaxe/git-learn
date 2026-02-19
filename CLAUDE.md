@@ -5,9 +5,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Build & Run
 
 ```bash
-pip install -e ".[dev]"          # Install in dev mode with test dependencies
+uv tool install git+https://github.com/phylaxe/git-learn.git  # User install
+pip install -e ".[dev]"          # Dev install with test dependencies
 terminal-learn                   # Launch the TUI (git module by default)
-terminal-learn -m linux          # Launch with Linux module
+terminal-learn -m linux          # Launch with Linux module (needs Docker)
 terminal-learn status            # Show progress
 terminal-learn reset             # Reset progress
 terminal-learn modules           # List available modules
