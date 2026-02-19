@@ -3,8 +3,8 @@
 import subprocess
 from pathlib import Path
 
-from git_learn.validator import validate_rule
-from git_learn.validator.base import ValidationResult
+from terminal_learn.validator import validate_rule
+from terminal_learn.validator.base import ValidationResult
 
 
 def _run(cmd: str, cwd: Path) -> None:

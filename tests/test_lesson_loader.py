@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from git_learn.lesson_loader import Lesson, load_lesson, load_all_lessons
+from terminal_learn.lesson_loader import Lesson, load_lesson, load_all_lessons
 
 
 def test_load_lesson_parses_frontmatter(tmp_path: Path) -> None:
@@ -31,7 +31,7 @@ def test_load_lesson_parses_frontmatter(tmp_path: Path) -> None:
 
 
 def test_load_lesson_from_real_file() -> None:
-    lesson_path = Path(__file__).parent.parent / "lessons" / "beginner" / "01-init.md"
+    lesson_path = Path(__file__).parent.parent / "lessons" / "git" / "beginner" / "01-init.md"
     if not lesson_path.exists():
         return
     lesson = load_lesson(lesson_path)

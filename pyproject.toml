@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "git-learn"
+name = "terminal-learn"
 version = "0.1.0"
-description = "Interactive Git terminal trainer"
+description = "Interactive terminal trainer for Git, Linux, and more"
 requires-python = ">=3.12"
 dependencies = [
     "textual>=0.50.0",
@@ -16,13 +16,17 @@ dependencies = [
 ]
 
 [project.scripts]
-git-learn = "git_learn.__main__:cli"
+terminal-learn = "terminal_learn.__main__:cli"
+git-learn = "terminal_learn.__main__:cli"
 
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0",
     "pytest-cov>=4.0",
     "pytest-asyncio>=0.23.0",
+]
+docker = [
+    "docker>=7.0",
 ]
 
 [tool.pytest.ini_options]

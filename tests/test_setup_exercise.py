@@ -2,13 +2,13 @@
 
 from pathlib import Path
 
-from git_learn.lesson_loader import load_lesson
-from git_learn.setup_exercise import setup_exercise, get_exercise_path, teardown_exercise
+from terminal_learn.lesson_loader import load_lesson
+from terminal_learn.setup_exercise import setup_exercise, get_exercise_path, teardown_exercise
 
 
 def test_get_exercise_path() -> None:
-    path = get_exercise_path("beginner/01-init")
-    assert "git-learn" in str(path)
+    path = get_exercise_path("git", "beginner/01-init")
+    assert "terminal-learn" in str(path)
     assert "beginner-01-init" in str(path)
 
 
@@ -29,6 +29,7 @@ def test_setup_exercise_creates_repo(tmp_path: Path) -> None:
 
     assert (exercise_dir / ".git").is_dir()
     assert (exercise_dir / "hello.txt").exists()
+    assert (exercise_dir / ".terminal-learn").is_dir()
 
 
 def test_setup_exercise_installs_command_log_hook(tmp_path: Path) -> None:
@@ -46,7 +47,7 @@ def test_setup_exercise_installs_command_log_hook(tmp_path: Path) -> None:
     exercise_dir = tmp_path / "exercise"
     setup_exercise(lesson, exercise_dir)
 
-    bashrc = exercise_dir / ".git" / "git-learn-bashrc"
+    bashrc = exercise_dir / ".terminal-learn" / "bashrc"
     assert bashrc.exists()
     content = bashrc.read_text()
     assert "check" in content
